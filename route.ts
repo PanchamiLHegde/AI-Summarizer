@@ -35,12 +35,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Groq returned no choices" }, { status: 500 });
     }
 
-    const summary = data.choices[0]?.message?.content?.trim() || "⚠️ No summary generated.";
+    const summary = data.choices[0]?.message?.content?.trim() || " No summary generated.";
 
     return NextResponse.json({ summary });
   } catch (error) {
-    console.error("❌ Summarize API error:", error);
+    console.error(" Summarize API error:", error);
     return NextResponse.json({ error: "Failed to summarize" }, { status: 500 });
   }
 }
+
 
