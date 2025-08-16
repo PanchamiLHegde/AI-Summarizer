@@ -24,7 +24,7 @@ export default function Home() {
       setSummary(data.summary || "No summary generated.");
     } catch (err) {
       console.error(err);
-      setSummary("❌ Error generating summary.");
+      setSummary(" Error generating summary.");
     }
     setLoading(false);
   };
@@ -49,13 +49,13 @@ export default function Home() {
 
       const data = await res.json();
       if (data.success) {
-        setEmailStatus("✅ Email sent successfully!");
+        setEmailStatus(" Email sent successfully!");
       } else {
-        setEmailStatus("❌ Failed to send email.");
+        setEmailStatus(" Failed to send email.");
       }
     } catch (err) {
       console.error(err);
-      setEmailStatus("❌ Error sending email.");
+      setEmailStatus(" Error sending email.");
     }
   };
 
@@ -108,3 +108,4 @@ export default function Home() {
     </main>
   );
 }
+
