@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify({
         model: "llama3-8b-8192",
- // ✅ Groq recommended model
+ 
         messages: [
           { role: "system", content: "You are an AI summarizer." },
           { role: "user", content: instructions ? `${instructions}\n\n${text}` : text },
@@ -29,17 +29,18 @@ export async function POST(req: Request) {
     });
 
     const data = await response.json();
-    console.log("✅ Raw Groq response:", data);
+    console.log(" Raw Groq response:", data);
 
     if (!data.choices || data.choices.length === 0) {
       return NextResponse.json({ error: "Groq returned no choices" }, { status: 500 });
     }
 
-    const summary = data.choices[0]?.message?.content?.trim() || "⚠️ No summary generated.";
+    const summary = data.choices[0]?.message?.content?.trim() || " No summary generated.";
 
     return NextResponse.json({ summary });
   } catch (error) {
-    console.error("❌ Summarize API error:", error);
+    console.error(" Summarize API error:", error);
     return NextResponse.json({ error: "Failed to summarize" }, { status: 500 });
   }
 }
+
